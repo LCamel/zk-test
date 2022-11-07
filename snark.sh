@@ -43,4 +43,5 @@ snarkjs groth16 verify verification_key.json public.json proof.json
 
 
 snarkjs zkey export solidityverifier multiplier2_0001.zkey verifier.sol
-snarkjs generatecall
+snarkjs generatecall | tee call_remix.txt
+cat call_remix.txt | perl -lape 's/\"(.*?)"/uint($1)/g' > call_solidity.txt
